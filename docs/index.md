@@ -1,13 +1,18 @@
-# Hello VitePress
+---
+home: true
+heroImage: /logo.png
+heroAlt: Logo image
+heroText: Laravel-Vue
+tagline: API-SPA
+actionText: Get Started
+actionLink: /guide/introduction
+features:
+  - title: Pinia
+    details: Minimal setup with markdown-centered project structure helps you focus on writing.
+  - title: Tailwind
+    details: Enjoy the dev experience of Vue + webpack, use Vue components in markdown, and develop custom themes with Vue.
+  - title: Typescript
+    details: VitePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
+footer: MIT Licensed | Copyleft © 2022-present Ernesto Canquiz
+---
 
-[Home](/) <!-- sends the user to the root index.md -->
-
-[foo](/foo/) <!-- sends the user to index.html of directory foo -->
-
-[foo heading](./#heading) <!-- anchors user to a heading in the foo index file -->
-
-[bar - three](../bar/three) <!-- you can omit extention -->
-
-[bar - three](../bar/three.md) <!-- you can append .md -->
-
-[bar - four](../bar/four.html) <!-- -->
