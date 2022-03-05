@@ -1,6 +1,7 @@
 module.exports = {
   title: 'laravelVue(apiSpa)',
   description: 'Just playing around.',
+  base: '/', //  The default path during deployment / secondary address / base can be used/
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
