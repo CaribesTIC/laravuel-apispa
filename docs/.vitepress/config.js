@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'LARAVEL - más allá de crud',
+  title: 'laravelVue(apiSpa)',
   description: 'Just playing around.',
   base: '/', //  The default path during deployment / secondary address / base can be used/
   themeConfig: {
@@ -13,16 +13,17 @@ module.exports = {
         path: '/guide/',      // optional, link of the title, which should be an absolute path and must exist        
         sidebarDepth: 1,    // optional, defaults to 1
         children: [
-          { text: 'Prologo', link: '/guide/prologo' },
-          { text: 'Prefacio', link: '/guide/prefacio' }          
+          { text: 'Introduction', link: '/guide/introduction' },
+          { text: 'Setup Laravel API', link: '/guide/setup-laravel-api' },
+          { text: 'Setup Vue SPA', link: '/guide/setup-vue-spa' }
         ]
       }, {
-        text: 'LARAVEL MÁS ALLÁ DE CRUD',   // required
-        path: '/laravel-mas-alla-de-crud/',
+        text: 'Bar',   // required
+        path: '/bar/',
         collapsable: false, // optional, defaults to true        
         children: [
-          { text: 'Laravel orientado al dominio', link: '/laravel-mas-alla-de-crud/laravel-orientado-al-dominio' },
-          { text: 'Trabajar con datos', link: '/laravel-mas-alla-de-crud/trabajar-con-datos' }
+          { text: 'Tree', link: '/bar/tree' },
+          { text: 'Four', link: '/bar/four' }
         ]
       }
     ]

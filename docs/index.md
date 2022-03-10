@@ -2,10 +2,10 @@
 home: true
 heroImage: /logo.png
 heroAlt: Logo image
-heroText: LARAVEL
-tagline: MÁS ALLÁ DE CRUD
+heroText: Laravel-Vue
+tagline: API-SPA
 actionText: Get Started
-actionLink: /guide/prologo 
+actionLink: /guide/introduction
 features:
   - title: Pinia
     details: Minimal setup with markdown-centered project structure helps you focus on writing.
