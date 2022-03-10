@@ -62,3 +62,99 @@ Como nota al margen: ¡esto no significa que un lenguaje fuertemente tipado no p
 ---
 Los sistemas de tipo fuerte permiten a los desarrolladores tener mucha más información sobre el programa al escribir el código, en lugar de tener que ejecutarlo.
 ---
+
+Hay un concepto más que debemos analizar: sistemas de tipos estáticos y dinámicos, y aquí es donde las cosas comienzan a ponerse interesantes.
+
+Como probablemente sepa, PHP es un lenguaje interpretado, lo que significa que un script PHP se traduce a código de máquina en tiempo de ejecución. Cuando envía una solicitud a un servidor que ejecuta PHP, tomará esos archivos .php simples y analizará ese texto en algo que el procesador pueda ejecutar.
+
+Una vez más, esta es una de las fortalezas de PHP: la simplicidad de escribir un script, actualizar la página y todo está ahí. Esa es una gran diferencia en comparación con un lenguaje que debe compilarse antes de poder ejecutarse.
+
+Obviamente, existen mecanismos de almacenamiento en caché que optimizan esto, por lo que la declaración anterior es una simplificación excesiva, pero es lo suficientemente buena como para pasar al siguiente punto.
+
+Ese punto es que, una vez más, hay una desventaja en el enfoque de PHP: dado que solo verifica sus tipos en tiempo de ejecución, puede haber errores de tipo que bloqueen el programa mientras se ejecuta. Es posible que tenga un error claro para depurar, pero aún así el programa se bloqueó.
+
+Esta verificación de tipo en tiempo de ejecución hace que PHP sea un lenguaje de tipo dinámico. Por otro lado, un lenguaje tipificado estáticamente tendrá todas sus comprobaciones de tipo realizadas antes de que se ejecute el código, generalmente durante el tiempo de compilación.
+
+A partir de PHP 7.0, su sistema de tipos se ha mejorado bastante. Tanto es así que herramientas como PHPStan, Phan y Psalm comenzaron a ser muy populares últimamente. Estas herramientas toman el lenguaje dinámico que es PHP, pero ejecutan un montón de análisis estáticos en su código.
+
+Estas bibliotecas opcionales pueden ofrecer una gran cantidad de información sobre su código, sin tener que ejecutarlo ni ejecutar pruebas unitarias. Además, un IDE como PhpStorm también tiene muchas de estas comprobaciones estáticas integradas.
+
+Con toda esta información de fondo en mente, es hora de volver al núcleo de nuestra aplicación: los datos.
+
+## Estructuración de datos no estructurados
+
+¿Alguna vez ha tenido que trabajar con una "serie de cosas" que en realidad era más que una simple lista? ¿Utilizó las claves de matriz como campos? ¿Y sentiste el dolor de no saber exactamente qué había en esa matriz? ¿Qué tal si no está seguro de si los datos que contiene son realmente lo que espera que sean o qué campos están disponibles?
+
+Visualicemos de lo que estoy hablando: trabajar con las solicitudes de Laravel. Piense en este ejemplo como una operación CRUD básica para actualizar un cliente existente.
+
+```
+function store(CustomerRequest $request, Customer $customer)
+{
+    $validated = $request->validated();
+
+    $customer->name = $validated['name'];
+    $customer->email = $validated['email'];
+
+    // ...
+}
+```
+Es posible que ya vea surgir el problema: no sabemos exactamente qué datos están disponibles en la matriz $validated. Si bien las matrices en PHP son una estructura de datos versátil y poderosa, tan pronto como se usan para representar algo más que "una lista de cosas", hay mejores formas de resolver su problema.
+
+Antes de buscar soluciones, esto es lo que podría hacer para lidiar con esta situación:
+
+- Leer el código fuente
+- Lea la documentación
+- Dump $validado para inspeccionarlo
+- O use un depurador para inspeccionarlo
+
+Resulta que los sistemas fuertemente tipados en combinación con el análisis estático pueden ser de gran ayuda para comprender a qué nos enfrentamos exactamente. Lenguajes como Rust, por ejemplo, resuelven este problema limpiamente:
+
+```
+struct CustomerData {
+    name: String,
+    email: String,
+    birth_date: Date,
+}
+```
+En realidad, una estructura es exactamente lo que necesitamos, pero desafortunadamente PHP no tiene estructuras; tiene matrices y objetos, y eso es todo.
+
+Sin embargo... los objetos y las clases pueden ser suficientes.
+
+```
+class CustomerData
+{
+    public string $name;
+    public string $email;
+    public Carbon $birth_date;
+}
+```
+Es un poco más detallado, pero básicamente hace lo mismo. Este simple objeto podría usarse así.
+
+```
+function store(CustomerRequest $request, Customer $customer)
+{
+    $validated = CustomerData::fromRequest($request);
+
+    $customer->name = $validated->name;
+    $customer->email = $validated->email;
+    $customer->birth_date = $validated->birth_date;
+
+    // ...
+}
+```
+El analizador estático integrado en su IDE siempre podrá decirnos con qué datos estamos tratando.
+
+Este patrón de envolver datos no estructurados en tipos, para que podamos usar esos datos de manera confiable, se denomina "objetos de transferencia de datos". Es el primer patrón concreto que le recomiendo que use en sus proyectos de Laravel más grandes que el promedio.
+
+Cuando discuta este libro con sus colegas, amigos o dentro de la comunidad de Laravel, es posible que se encuentre con personas que no comparten la misma visión sobre los sistemas de tipos fuertes. De hecho, hay mucha gente que prefiere abrazar el lado dinámico/débil de PHP, y definitivamente hay algo que decir al respecto.
+
+Sin embargo, en mi experiencia, hay más ventajas en el enfoque fuertemente tipado cuando se trabaja con un equipo de varios desarrolladores en un proyecto durante mucho tiempo. Tienes que aprovechar cada oportunidad que puedas para reducir la carga cognitiva. No desea que los desarrolladores tengan que comenzar a depurar su código cada vez que quieran saber qué hay exactamente en una variable. La información debe estar al alcance de la mano, para que los desarrolladores puedan concentrarse en lo importante: crear la aplicación.
+
+Por supuesto, el uso de DTO tiene un precio: no solo existe la sobrecarga de definir estas clases; también necesita mapear, por ejemplo, solicitar datos en un DTO. Pero los beneficios de usar DTO definitivamente superan este costo adicional: cualquier tiempo que pierda inicialmente escribiendo este código, lo recuperará a largo plazo.
+
+Sin embargo, la pregunta sobre la construcción de DTO a partir de datos "externos" aún necesita respuesta.
+
+## Fábricas DTO
+
+DTO factories
+
