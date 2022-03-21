@@ -2,7 +2,7 @@
 
 It is assumed you have some experience working with VueJS, its router and state management package [Pinia](https://pinia.vuejs.org/). You can install the [Vite](https://vitest.dev/) using:
 
-```
+```js
 // with npm
 $ npm install -D vitest
 

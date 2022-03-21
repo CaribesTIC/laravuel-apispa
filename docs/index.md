@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.png
 heroAlt: Logo image
-heroText: Laravel-Vue
+heroText: LaraVuel
 tagline: API-SPA
 actionText: Get Started
 actionLink: /guide/introduction
