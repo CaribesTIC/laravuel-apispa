@@ -18,12 +18,19 @@ module.exports = {
           { text: 'Setup Vue SPA', link: '/guide/setup-vue-spa' }
         ]
       }, {
-        text: 'Bar',   // required
-        path: '/bar/',
+        text: 'Laravel',   // required
+        path: '/laravel/',
         collapsable: false, // optional, defaults to true        
         children: [
-          { text: 'Tree', link: '/bar/tree' },
-          { text: 'Four', link: '/bar/four' }
+          { text: 'Laravel with Postman', link: '/laravel/laravel-with-postman' },
+          { text: 'Four', link: '/laravel/four' }
+        ]
+      }, {
+        text: 'Vue',   // required
+        path: '/vue/',
+        collapsable: false, // optional, defaults to true        
+        children: [          
+          { text: 'Vue', link: '/vue/tree' }
         ]
       }
     ]
