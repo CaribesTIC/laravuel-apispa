@@ -1,7 +1,7 @@
 module.exports = {
   title: 'laraVuel(apiSpa)',
   description: 'Just playing around.',
-  base: '/', //  The default path during deployment / secondary address / base can be used/
+  base: '/vitepress-laravel-vue/', //  The default path during deployment / secondary address / base can be used/
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
