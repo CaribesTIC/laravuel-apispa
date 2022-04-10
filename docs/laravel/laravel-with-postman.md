@@ -24,7 +24,7 @@ Once the collection is created, this makes it easier to apply a pre-request scri
 
 We're going to be setting a CSRF token in our environment variables in Postman, so we need to create a Postman environment.
 
-Click the cog in the top right of Postman, click Add and give your environment a name (mine's forum). Click Add again and switch to your environment in the top right (see top right of screenshot).
+Click the cog in the top right of Postman, click Add and give your environment a name (mine's `Api-test`). Click Add again and switch to your environment in the top right (see top right of screenshot).
 
 ![login](./img/login.jpg)
 
@@ -65,11 +65,11 @@ Hit the eye icon in the top right to check.
 
 Great, that's our CSRF token value.
 
-Now update the /login request to add the X-XSRF-TOKEN header with the value {{xsrf-token}} (this is the value of our environment variable), and send the request again.
+Now update the /login request to add the X-XSRF-TOKEN header with the value __{ { xsrf - token } }__ (this is the value of our environment variable), and send the request again.
 
 ![X xsrf token](./img/xxsrftoken.jpg)
 
-Make sure you don't include spaces between the curly braces (e.g. {{ xsrf-token }}). Postman doesn't like that.
+Make sure you don't include spaces between the curly braces (e.g. __{ { xsrf - token } }__). Postman doesn't like that.
 
 Hopefully that worked for you. If not, you may have to check your Sanctum setup.
 
