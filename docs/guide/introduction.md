@@ -1,8 +1,8 @@
-# Introduction
+# Introducción
 
-If you are wanting to go down the route of having a completely separate SPA that consumes a Laravel API then these docs should provide all the reference you need to get things set up.
+Si desea seguir la ruta de tener un SPA completamente separado que consume una API de Laravel, estos documentos deberían proporcionar toda la referencia que necesita para configurar las cosas.
 
-The example project files can be found on GitHub:
+Los archivos de proyecto de ejemplo se pueden encontrar en GitHub:
 
 - [Larvel API](https://github.com/CaribesTIC/laravel-backend)
 - [Vue SPA](https://github.com/CaribesTIC/vue-frontend-ts)

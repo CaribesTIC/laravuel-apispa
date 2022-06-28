@@ -4,7 +4,7 @@ heroImage: /logo.png
 heroAlt: Logo image
 heroText: LaraVuel
 tagline: API-SPA
-actionText: Get Started
+actionText: Comenzar
 actionLink: /guide/introduction
 features:
   - title: Pinia

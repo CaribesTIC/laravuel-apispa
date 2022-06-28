@@ -1,48 +1,50 @@
-# Laravel Sanctum (Airlock) with Postman
+# Laravel Sanctum (Airlock) con Postman
 
-Remember that you are using Laravel as an API. And to test it with Postman, this requires a bit more work than just attaching a token (unless you're using token-based authentication with Sanctum).
+:::info Prueba
+Esta lección en [video](https://blog.codecourse.com/laravel-sanctum-airlock-with-postman/)
+:::
 
-If you're building a SPA and want to test your endpoints with cookie-based authentication in Postman, here's how to do it.
+Recuerda que estás usando Laravel como una API. Y para probarlo con Postman, esto requiere un poco más de trabajo que simplemente adjuntar un token (a menos que esté utilizando autenticación basada en token con Sanctum).
 
-## The jist of it
+Si está creando un SPA y quiere probar sus terminales con autenticación basada en cookies en Postman, aquí le mostramos cómo hacerlo.
 
-Because Sanctum uses cookie-based authentication and hits CSRF protected endpoints like /login and /logout, we need to make sure we're sending a CSRF token with Postman. We get this by sending a request to /sanctum/csrf-cookie first. We'll also need to make sure the Referrer is properly sent for future requests for Sanctum to allow them.
+## La esencia de esto
 
-Estoy probando esto con un proyecto Laravel correctamente configurado con Sanctum, que permite solicitudes de localhost, en términos de dominios CORS y Sanctum.
+Debido a que Sanctum utiliza la autenticación basada en cookies y llega a puntos finales protegidos por CSRF como `/login` y `/logout`, debemos asegurarnos de que estamos enviando un token CSRF con Postman. Obtenemos esto enviando una solicitud a `/sanctum/csrf-cookie` primero. También tendremos que asegurarnos de que el `Referrer` se envíe correctamente para futuras solicitudes de Sanctum para permitirlos.
 
-We're testing this with a [Laravel Project properly configured with Sanctum](../guide/setup-laravel-api.html#), that allows requests from localhost, in terms of both CORS and Sanctum domains.
+Estamos probando esto con un [Proyecto Laravel correctamente configurado con Sanctum](../laravel/setup-laravel-api.html#), que permite solicitudes de localhost, en términos de dominios CORS y Sanctum.
 
-## Create a Postman Collection
+## Crear una Colección de Postman
 
-We'd recommend creating a Postman collection so we can apply our pre-request script (in a moment) to all endpoints.
+Recomendamos crear una colección de Postman para que podamos aplicar nuestro script de solicitud previa (en un momento) a todos los puntos finales.
 
 ![Create collection](./img/create-collection.jpg)
 
-Once the collection is created, this makes it easier to apply a pre-request script to all endpoints under that collection. It also helps keep everything nice and tidy.
+Una vez que se crea la colección, esto facilita la aplicación de un script de solicitud previa a todos los puntos finales de esa colección. También ayuda a mantener todo limpio y ordenado.
 
-## Create an environment
+## Crea un ambiente
 
-We're going to be setting a CSRF token in our environment variables in Postman, so we need to create a Postman environment.
+Vamos a configurar un token CSRF en nuestras variables de entorno en Postman, por lo que debemos crear un entorno de Postman.
 
-Click the cog in the top right of Postman, click Add and give your environment a name (mine's `Api-test`). Click Add again and switch to your environment in the top right (see top right of screenshot).
+Haga clic en la rueda dentada en la parte superior derecha de Postman, haga clic en Agregar y asigne un nombre a su entorno (el mío `Api-test`). Haga clic en Agregar nuevamente y cambie a su entorno en la parte superior derecha (vea la parte superior derecha de la captura de pantalla).
 
 ![login](./img/login.jpg)
 
-## Add a pre-request script
+## Agregar un script de solicitud previa
 
-Before we do some request, create a new request to `/login` in Postman, save it to your collection and add in the form data (email and password). Add an `Accept` header with `application/json` too, so you get back JSON.
+Antes de realizar alguna solicitud, cree una nueva solicitud para `/login` en Postman, guárdela en su colección y agregue los datos del formulario (email y password). Agregue un encabezado `Accept` con `application/json` también, para recuperar JSON.
 
 ![login](./img/surprise.jpg)
 
-No surprise here, we get back a CSRF token mismatch error.
+No es de extrañar aquí, recibimos un error de discrepancia de token CSRF.
 
-So, let's add that pre-request script to grab the CSRF token using Sanctum, setting the value in our Postman environment variables.
+Entonces, agreguemos ese `Pre-request Scripts` para tomar el token CSRF usando Sanctum, configurando el valor en nuestras variables de entorno de Postman.
 
-Edit your collection and switch to the Pre-request Scripts tab, and add the following.
+Edite su colección y cambie a la pestaña `Pre-request Scripts` y agregue lo siguiente.
 
 ![Pre request](./img/pre-request.jpg)
 
-Don't type it from the screenshot, copy it from here:
+No lo escriba desde la captura de pantalla, cópielo desde aquí:
 
 ```js
 pm.sendRequest({
@@ -55,39 +57,43 @@ pm.sendRequest({
 })
 ```
 
-Click Update and that'll be saved.
+Haz click en Update y eso se guardará.
 
-Now make another request to /login. This time, the pre-request script will be run and will set the cookie we get back from the /sanctum/csrf-cookie endpoint into our environment.
+Ahora haga otra solicitud a `/login`. Esta vez, se ejecutará `Pre-request Scripts` y establecerá la cookie que obtenemos del punto final `/sanctum/csrf-cookie` en nuestro entorno.
 
-Hit the eye icon in the top right to check.
+Presiona el ícono del ojo en la parte superior derecha para verificar.
 
 ![Csrf cookie](./img/csrf-cookie.jpg)
 
-Great, that's our CSRF token value.
+Genial, ese es nuestro valor de token CSRF.
 
-Now update the /login request to add the X-XSRF-TOKEN header with the value __{ { xsrf - token } }__ (this is the value of our environment variable), and send the request again.
+Ahora actualice la solicitud `/login` para agregar el encabezado `X-XSRF-TOKEN` con el valor:
+
+__{ { xsrf - token } }__
+
+(este es el valor de nuestra variable de entorno) y envíe la solicitud nuevamente.
 
 ![X xsrf token](./img/xxsrftoken.jpg)
 
-Make sure you don't include spaces between the curly braces (e.g. __{ { xsrf - token } }__). Postman doesn't like that.
+Asegúrese de no incluir espacios entre las llaves (por ejemplo, __{ { xsrf - token } }__). A Postman no le gusta eso.
 
-Hopefully that worked for you. If not, you may have to check your Sanctum setup.
+Espero que eso haya funcionado para ti. De lo contrario, es posible que deba verificar la configuración de Sanctum.
 
-## Make authenticated requests
+## Hacer solicitudes autenticadas
 
-So we've sorted CSRF, now we'll make a request to `/api/users` to verify we're actually authenticated. Create a request for this in Postman and add it to your collection. And of course, send that request.
+Así que hemos ordenado CSRF, ahora haremos una solicitud a `/api/users` para verificar que realmente estamos autenticados. Cree una solicitud para esto en Postman y agréguelo a su colección. Y por supuesto, enviar esa solicitud.
 
 ![Unauthenticated](./img/unauthenticated.jpg)
 
-Hmm, unauthenticated.
+Hmm, no autenticado.
 
-Now, this should actually work. Postman has stored the cookies we got back from making the earlier request to /login and will send them along with this request. You can verify this by clicking the cookies link to the top right of your request.
+Ahora, esto debería funcionar. Postman ha almacenado las cookies que obtuvimos al realizar la solicitud anterior a `/login` y las enviará junto con esta solicitud. Puede verificar esto haciendo click en el enlace de cookies en la parte superior derecha de su solicitud.
 
 ![Cookies](./img/cookies.jpg)
 
-The reason this isn't working is that Sanctum is denying the authenticated request based on the referrer.
+La razón por la que esto no funciona es que Sanctum está denegando la solicitud autenticada en función al `Referrer`.
 
-If you're interested in diving into some Sanctum code and figuring out why, open up the EnsureFrontendRequestsAreStateful middleware and check out the fromFrontend method that all requests are piped through.
+Si está interesado en sumergirse en algún código de Sanctum y averiguar por qué, abra el middleware de `GuaranteeFrontendRequestsAreStateful` y compruebe el método `fromFrontend` por el que se canalizan todas las solicitudes.
 
 ```php
 public static function fromFrontend($request)
@@ -101,40 +107,36 @@ public static function fromFrontend($request)
 }
 ```
 
-It's checking the referrer!
+¡Está comprobando el `Referrer`!
 
-At the moment in Postman, this isn't set, so add it to your headers list and send the request again.
+Por el momento en Postman, esto no está configurado, así que agréguelo a su lista de encabezados y envíe la solicitud nuevamente.
 
 ![Users list](./img/userslist.jpg)
 
-And there you go, a successful request to an authenticated endpoint.
-
-It's best at this point to save your domain in an environment variable in Postman. If this changes and you have a lot of endpoints, this'll be a nightmare to update.
-
-Click the cog in the top right, select your environment and manually add in your host.
+Y listo, una solicitud exitosa a un punto final autenticado.
 
 ![Localhost port](./img/localhostport.jpg)
 
---------------------------
+Es mejor en este punto guardar su dominio en una variable de entorno en Postman. Si esto cambia y tiene muchos puntos finales, será una pesadilla actualizarlo.
+
+Haga click en el engranaje en la parte superior derecha, seleccione su entorno y agregue manualmente su host.
 
 ![Env name](./img/envname.jpg)
 
-Once you've saved that, switch out the header value and send the request again.
+Una vez que haya guardado eso, cambie el valor del encabezado y envíe la solicitud nuevamente.
 
 ![Users list](./img/userslist.jpg)
 
-Still works. Great.
+Todavía funciona. Excelente.
 
-You'll need to add the Referrer header to all requests you make to your API, if they're protected with Sanctum. That's not too much trouble, though.
+Deberá agregar el encabezado `Referrer` a todas las solicitudes que realice a su API, si están protegidas con Sanctum. Sin embargo, eso no es demasiado problema.
 
-## A quick note on other web routes
+## Una nota rápida sobre otras rutas web
 
-Sanctum let's us use the normal /login web route to authenticate, but that's not all. We can also hit /logout to invalidate the authenticated cookie value.
+Sanctum nos permite usar la ruta web normal `/login` para autenticarnos, pero eso no es todo. También podemos pulsar `/logout` para invalidar el valor de la cookie autenticada.
 
-For these other web routes (also CSRF protected), you need to ensure you're also sending the token down. Here's a quick example.
+Para estas otras rutas web (también protegidas por CSRF), debe asegurarse de que también está enviando el token. Aquí hay un ejemplo rápido.
 
 ![logout](./img/logout.jpg)
 
-My request to /logout was successful because I'm sending down the X-XSRF-TOKEN header, much like we did for /login.
-
-https://blog.codecourse.com/laravel-sanctum-airlock-with-postman/
+Mi solicitud para `/logout` fue exitosa porque estoy enviando el encabezado `X-XSRF-TOKEN`, al igual que lo hicimos para `/login`.
