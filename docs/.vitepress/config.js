@@ -1,13 +1,13 @@
 module.exports = {
   title: 'LaraVuel-ApiSpa',
   description: 'Just playing around.',
-  base: '/', //  The default path during deployment / secondary address / base can be used/
+  base: '/laravuel-apispa/', //  The default path during deployment / secondary address / base can be used/
   themeConfig: {
     nav: [
       { text: 'Inicio', link: '/' },
       { text: 'Guía', link: '/guide/' },
-      { text: 'GH-Laravel', link: 'https://github.com/CaribesTIC/laravel-backend' },
-      { text: 'GH-Vue', link: 'https://github.com/CaribesTIC/vue-frontend-ts' }
+      { text: 'Gh-Laravel', link: 'https://github.com/CaribesTIC/laravel-backend' },
+      { text: 'Gh-Vue', link: 'https://github.com/CaribesTIC/vue-frontend-ts' }
     ],
     sidebar: [{
         text: 'Comenzar',   // required
