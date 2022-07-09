@@ -1,7 +1,7 @@
 # Laravel Sanctum (Airlock) con Postman
 
 :::info Prueba
-Esta lección en [video](https://blog.codecourse.com/laravel-sanctum-airlock-with-postman/)
+Esta lección en [idioma original](https://blog.codecourse.com/laravel-sanctum-airlock-with-postman/)
 :::
 
 Recuerda que estás usando Laravel como una API. Y para probarlo con Postman, esto requiere un poco más de trabajo que simplemente adjuntar un token (a menos que esté utilizando autenticación basada en token con Sanctum).
@@ -28,13 +28,17 @@ Vamos a configurar un token CSRF en nuestras variables de entorno en Postman, po
 
 Haga clic en la rueda dentada en la parte superior derecha de Postman, haga clic en Agregar y asigne un nombre a su entorno (el mío `Api-test`). Haga clic en Agregar nuevamente y cambie a su entorno en la parte superior derecha (vea la parte superior derecha de la captura de pantalla).
 
-![login](./img/login.jpg)
+![login](./img/gear.jpg)
 
 ## Agregar un script de solicitud previa
 
-Antes de realizar alguna solicitud, cree una nueva solicitud para `/login` en Postman, guárdela en su colección y agregue los datos del formulario (email y password). Agregue un encabezado `Accept` con `application/json` también, para recuperar JSON.
+Antes de realizar alguna solicitud, cree una nueva solicitud para `/login` en Postman, guárdela en su colección y agregue los datos del formulario (email y password).
 
-![login](./img/surprise.jpg)
+![login](./img/surprise1.jpg)
+
+Pero, antes agregue un encabezado `Accept` con `application/json` también, para recuperar JSON.
+
+![login](./img/surprise2.jpg)
 
 No es de extrañar aquí, recibimos un error de discrepancia de token CSRF.
 
@@ -57,7 +61,7 @@ pm.sendRequest({
 })
 ```
 
-Haz click en Update y eso se guardará.
+Haz click en `Save` y eso se guardará.
 
 Ahora haga otra solicitud a `/login`. Esta vez, se ejecutará `Pre-request Scripts` y establecerá la cookie que obtenemos del punto final `/sanctum/csrf-cookie` en nuestro entorno.
 
@@ -109,13 +113,11 @@ public static function fromFrontend($request)
 
 ¡Está comprobando el `Referrer`!
 
-Por el momento en Postman, esto no está configurado, así que agréguelo a su lista de encabezados y envíe la solicitud nuevamente.
-
-![Users list](./img/userslist.jpg)
-
-Y listo, una solicitud exitosa a un punto final autenticado.
+Por el momento en Postman, esto no está bien configurado, así que agréguelo a su lista de encabezados y envíe la solicitud nuevamente. 
 
 ![Localhost port](./img/localhostport.jpg)
+
+Y listo, una solicitud exitosa a un punto final autenticado.
 
 Es mejor en este punto guardar su dominio en una variable de entorno en Postman. Si esto cambia y tiene muchos puntos finales, será una pesadilla actualizarlo.
 
@@ -125,7 +127,7 @@ Haga click en el engranaje en la parte superior derecha, seleccione su entorno y
 
 Una vez que haya guardado eso, cambie el valor del encabezado y envíe la solicitud nuevamente.
 
-![Users list](./img/userslist.jpg)
+![Users list](./img/localhostport.jpg)
 
 Todavía funciona. Excelente.
 
