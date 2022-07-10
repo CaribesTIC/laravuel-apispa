@@ -1,7 +1,7 @@
 module.exports = {
   title: 'LaraVuel-ApiSpa',
   description: 'Just playing around.',
-  base: '/', //  The default path during deployment / secondary address / base can be used/
+  base: '/laravuel-apispa/', //  The default path during deployment / secondary address / base can be used/
   themeConfig: {
     nav: [
       { text: 'Inicio', link: '/' },
@@ -31,7 +31,9 @@ module.exports = {
         collapsable: false, // optional, defaults to true        
         children: [          
           { text: 'Configurar Vue SPA', link: '/vue/setup-vue-spa' },
-          { text: 'Autenticación de Vue', link: '/vue/vue-authentication' }
+          { text: 'Autenticación de Vue', link: '/vue/vue-authentication' },
+          { text: 'Complementos Globales de Vue', link: '/vue/vue-global-plugins' },
+          { text: 'Usando VueRouter', link: '/vue/using-vuerouter' }
         ]
       }
     ]
