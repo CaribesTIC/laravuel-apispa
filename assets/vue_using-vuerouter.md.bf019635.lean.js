@@ -1,1 +1,0 @@
-import{_ as n,c as s,o as a,d as t}from"./app.8a3924f8.js";const w='{"title":"Usando VueRouter","description":"","frontmatter":{},"headers":[{"level":2,"title":"@/router","slug":"router"}],"relativePath":"vue/using-vuerouter.md"}',o={},p=t("",4),e=[p];function c(u,r,l,k,i,d){return a(),s("div",null,e)}var f=n(o,[["render",c]]);export{w as __pageData,f as default};
