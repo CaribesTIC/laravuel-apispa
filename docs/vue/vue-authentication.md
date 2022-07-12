@@ -58,21 +58,21 @@ El método para proteger las rutas de su aplicación es bastante simple. En los 
 
 ```ts
 router.beforeEach((to, from, next) => {
-  const authUser = store.getters["auth/authUser"];
+  const authUser = storeAuth.value.authUser;
   const reqAuth = to.matched.some((record) => record.meta.requiresAuth);
   const loginQuery = { path: "/login", query: { redirect: to.fullPath } };
 
   if (reqAuth && !authUser) {
-    store.dispatch("auth/getAuthUser").then(() => {
-      if (!store.getters["auth/authUser"]) next(loginQuery);
-      else next();
+    storeAuth.value.getAuthUser().then(() => {
+      (!storeAuth.value.authUser) 
+        ? next(loginQuery)
+          :next();
     });
   } else {
     next(); // make sure to always call next()!
   }
 });
 ```
-
 Algunos escenarios deben manejarse aquí:
 
 1. Si hay un usuario autenticado en estado, la ruta permite cargar la página.

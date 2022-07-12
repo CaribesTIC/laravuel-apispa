@@ -33,7 +33,8 @@ module.exports = {
           { text: 'Configurar Vue SPA', link: '/vue/setup-vue-spa' },
           { text: 'Autenticación de Vue', link: '/vue/vue-authentication' },
           { text: 'Complementos Globales de Vue', link: '/vue/vue-global-plugins' },
-          { text: 'Usando VueRouter', link: '/vue/using-vuerouter' }
+          { text: 'Usando VueRouter', link: '/vue/using-vuerouter' },
+          { text: 'El Middleware', link: '/vue/the-middleware' }
         ]
       }
     ]

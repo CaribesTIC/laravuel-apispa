@@ -217,4 +217,3 @@ Observe que en la ruta `profile` se nos olvidó colocar la propiedad `layout`. E
       .then(m => m.default),
 }
 ```
-
