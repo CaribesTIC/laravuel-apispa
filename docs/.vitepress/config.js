@@ -31,10 +31,12 @@ module.exports = {
         collapsable: false, // optional, defaults to true        
         children: [          
           { text: 'Configurar Vue SPA', link: '/vue/setup-vue-spa' },
+          { text: 'Envoltorio de Axios', link: '/vue/axios-wrapper' },
           { text: 'Autenticación de Vue', link: '/vue/vue-authentication' },
           { text: 'Complementos Globales de Vue', link: '/vue/vue-global-plugins' },
           { text: 'Usando VueRouter', link: '/vue/using-vuerouter' },
-          { text: 'El Middleware', link: '/vue/the-middleware' }
+          { text: 'El Middleware', link: '/vue/the-middleware' },
+          { text: 'Vistas y Componentes', link: '/vue/views- and-components' }
         ]
       }
     ]

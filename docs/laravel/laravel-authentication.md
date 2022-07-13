@@ -27,7 +27,7 @@ Mientras esté en el archivo `config/cors.php`, configure lo siguiente:
 'supports_credentials' => true,
 ```
 
-Lo anterior asegura que tiene el encabezado `Access-Control-Allow-Credentials` con un valor de `true` establecido. Puedes leer más sobre esto en la [documentación de MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials). Pasaremos este encabezado a través del SPA, pero [hablaremos más de eso cuando pasemos a configurarlo](../vue/setup-vue-spa.html#).
+Lo anterior asegura que tiene el encabezado `Access-Control-Allow-Credentials` con un valor de `true` establecido. Puedes leer más sobre esto en la [documentación de MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials). Pasaremos este encabezado a través del SPA, pero hablaremos más de eso cuando pasemos a [configurarlo](../vue/axios-wrapper.html#objeto-init).
 
 ## Configuración de Fortify
 
