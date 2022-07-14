@@ -39,7 +39,7 @@ Observe que primero importamos el método `createApp`, nativo de Vue, para luego
 
 ## `plugins`
 
-Según lo establecido en el [archivo principal](../vue/vue-global-plugins.html#main), la siguiente pregunta que nos hacemos es:
+Según lo establecido en el [archivo principal](../vue/vue-global-plugins.html#main), la siguiente pregunta que hacemos es:
 
 - [¿Qué devuelve `import '@/plugins'`?](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/plugins/index.ts)
 
@@ -72,7 +72,7 @@ app.use(FontAwesomePlugin)
 ```
 Aquí están sucediendo varias cosas que despiertan curiosidad y que serán discutidas más adelante.
 
-Sin embargo, lo importante para reconocer aquí es que primero estamos importando lo que devuelve el [`plugins/app`](../vue/vue-global-plugins.html#plugins-app). Luego configuramos los complementos [`pinia`](https://pinia.vuejs.org/) y [`FontAwesomePlugin`](https://fontawesome.com/), pasándolos como complemento a la instancia de `app` a travéz del método `use`.
+Sin embargo, lo importante para reconocer aquí es que primero estamos importando lo que devuelve [`plugins/app`](../vue/vue-global-plugins.html#plugins-app). Luego configuramos los complementos [`pinia`](https://pinia.vuejs.org/) y [`FontAwesomePlugin`](https://fontawesome.com/), pasándolos como complemento a la instancia de `app` a travéz del método `use`.
 
 ## `plugins/components`
 

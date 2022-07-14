@@ -42,9 +42,9 @@ export class Http {
     init.handleError = init.handleError !== undefined ? init.handleError : this.defaultHandleError
   }
   
-  defaultHandleSuccess(response: AxiosResponse ) { return response; }
+  defaultHandleSuccess(response: AxiosResponse) { return Promise.resolve(response); }
   
-  defaultHandleError(error: AxiosError) { return error; }
+  defaultHandleError(error: AxiosError) { return Promise.reject(error); }
 
   get(path: string) {
     return this.service.request({
@@ -103,11 +103,12 @@ Veamos lo que conforma el objeto `init`.
 // utils/Http/init.ts
 import { useAuthStore } from '@/modules/Auth/stores'
 import type { Init } from "./Http"
+import { AxiosError } from "axios";
 
 export default<Init> {
   baseURL: process.env.VUE_APP_API_URL,  
-  withCredentials: true, 
-  handleError(error: any) {
+  withCredentials: true,
+  handleError(error: AxiosError) {
     const storeAuth = useAuthStore()
     
     if (error.response
@@ -122,11 +123,29 @@ export default<Init> {
   }
 }
 ```
-Observamos aquí, que básicamente para crear una instancia de Http que haga solicitudes a nuestra API, necesitamos proporcionarle al objeto `init` los siguientes tres propiedades:
+Observamos aquí, que básicamente para crear una instancia de Http que haga solicitudes a nuestra API, necesitamos proporcionarle al objeto `init` las siguientes tres propiedades:
 
-1. `baseURL`: conforma la ruta o nuestra API, la cual la estamos accediendo desde nuestro [archivo de congiguración de Vite](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/vite.config.ts).
+1. `baseURL`: representa la URL base de nuestra API, la cual está declarada en nuestro [archivo de congiguración de Vite](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/vite.config.ts).
 1. `withCredentials`: esta propiedad establecida en `true` asegura que tendrá el encabezado _Access-Control-Allow-Credentials_. Puedes leer más sobre esto en la [documentación de MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials).
 1. `handleError`: es un simple método personalizado para el manejo de errores. Note que implementa el método `useAuthStore` de nuestro [Store de Auth](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/stores/index.ts).
+
+[Aquí](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/utils/Http/Http.ts) mostramos su declaraciones de tipado:
+
+```ts
+// @/utils/Http/Http.ts
+import type { GenericObject } from "@/utils/Types"
+import { AxiosResponse } from "axios";
+
+export interface Init {  
+  baseURL?: string;
+  withCredentials?: boolean;
+  customHeaders?: GenericObject;
+  customParams?: GenericObject | URLSearchParams;  
+  handleError?: ((error: any) => any) | undefined;
+  handleSuccess?: (value: AxiosResponse<any, any>) =>
+    AxiosResponse<any, any> | Promise<AxiosResponse<any, any>>;
+}
+```
 
 Si por alguna razón no desea crear una instancia `Http` con las características contempladas en el objeto `ìnit` observe que también esta clase está exportada de manera nombrada.
 
@@ -193,3 +212,8 @@ export class Http {
 export default new Http( init );
 ```
 Ya con estos conceptos claros es suficiente para poder realizar peticiones a nuestra API.
+
+:::info
+Con Http podemos cambiar de Axios a Fetch sin necesidad de modificar toda la aplicación cuando así se requiera. Incluso facilita optar por envoltorios más elaborados como [Sttp](https://superchargejs.com/docs/3.x/sttp).
+:::
+

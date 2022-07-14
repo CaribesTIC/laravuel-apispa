@@ -1,6 +1,6 @@
 # Usando VueRouter
 
-Una vez instanciado el `router`, es pasado como complemento global a la aplicación. Puede ver más detalles sobre complementos [aquí](../vue/vue-global-plugins.html).
+Una vez instanciado el `router`, este es pasado como complemento global a la aplicación. Puede ver más detalles sobre complementos [aquí](../vue/vue-global-plugins.html).
 
 ## `router`
 
@@ -62,6 +62,14 @@ export default router
 Veámoslo por parte.
 
 ## Arquitectura Modular
+
+Un módulo es normalmente un subsistema que proporciona uno o más servicios a otros módulos. Los módulos se componen normalmente de varios componentes del sistema más simples. A su vez éste usa los servicios proporcionados por otros módulos.
+
+>Es más fácil resolver un problema complejo cuando se rompe en piezas manejables.
+
+Entonce, nuestra estructura de carpetas lucirá de esta forma.
+
+![Modular architecture](./img/modules.jpg)
 
 Observe que separamos por módulos nuestra aplicación con el propósito de que sea lo más ordenada posible.
 
@@ -217,3 +225,58 @@ Observe que en la ruta `profile` se nos olvidó colocar la propiedad `layout`. E
       .then(m => m.default),
 }
 ```
+
+## RouterLink Extendido
+
+En la mayoría de las aplicaciones de tamaño mediano a grande, vale la pena crear componentes RouterLink personalizados. Por ello, ampliamos RouterLink, para manejar enlaces externos también. Echemos un vistazo al componente [`AppLink.vue`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/components/AppLink.vue).
+
+```vue
+<script lang="ts">
+import { RouterLink } from 'vue-router'
+export default {
+  name: 'AppLink',
+  inheritAttrs: false,
+  props: {
+    // add @ts-ignore if using TypeScript
+    ...RouterLink.props,
+    inactiveClass: String,
+  },
+  computed: {
+    isExternalLink():boolean {
+      return typeof this.to === 'string' && this.to.startsWith('http')
+    },
+  },
+}
+</script>
+
+<template>
+  <a
+    v-if="isExternalLink"
+    v-bind="$attrs"
+    :href="to"
+    target="_blank"
+    rel="noopener"
+    class="external-link"
+  >
+    <slot />
+  </a>
+  
+  <router-link
+    v-else
+    v-bind="$props"
+    class="internal-link"
+    v-slot="{ isActive, href, navigate }"
+  >
+    <a
+      v-bind="$attrs"
+      :href="href"
+      @click="navigate"
+      :class="isActive ? activeClass : inactiveClass"
+    >
+      <slot />
+    </a>
+  </router-link>
+</template>
+```
+
+Recordemos que el componente `AppLink.vue` forma parte de los [componentes globales](../vue/vue-global-plugins.html#plugins-components) de la SPA. Por lo tanto, esta siempre disponible dentro de cualquier otro componente.
