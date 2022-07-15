@@ -168,9 +168,9 @@ const layout = computed(
 </style>
 ```
 
-En el archivo [`@/modules/Auth/routes`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/routes/index.ts) hay un buen ejemplo sobre esto.
+En el archivo [`@/modules/Auth/routes`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/routes/index.ts) hay un buen ejemplo sobre esto. Observemos que en la ruta `profile` se nos olvidó colocar la propiedad `layout`, por lo que en este casos tendrá el valor predeterminado.
 
-```ts{6,14,21,28,36}
+```ts{28}
 // omitted for brevity ...
 
 export default [{
@@ -211,19 +211,6 @@ export default [{
 },
 // omitted for brevity ...
 ]
-```
-
-Observe que en la ruta `profile` se nos olvidó colocar la propiedad `layout`. En estos casos tendrá el valor por defecto.
-
-```ts
-{
-  path: "/profile",
-  name: "profile",
-  meta: { middleware: [auth] },
-  component: () =>
-    import("@/modules/Auth/views/Profile/Index.vue")
-      .then(m => m.default),
-}
 ```
 
 ## RouterLink Extendido

@@ -36,7 +36,7 @@ module.exports = {
           { text: 'Complementos Globales de Vue', link: '/vue/vue-global-plugins' },
           { text: 'Usando VueRouter', link: '/vue/using-vuerouter' },
           { text: 'El Middleware', link: '/vue/the-middleware' },
-          { text: 'Vistas y Componentes', link: '/vue/views- and-components' }
+          { text: 'Vistas y Componentes', link: '/vue/views-and-components' }
         ]
       }
     ]
