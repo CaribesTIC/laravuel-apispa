@@ -6,8 +6,7 @@ module.exports = {
     nav: [
       { text: 'Inicio', link: '/' },
       { text: 'Guía', link: '/guide/' },
-      { text: 'GH-Laravel', link: 'https://github.com/CaribesTIC/laravel-backend' },
-      { text: 'GH-Vue', link: 'https://github.com/CaribesTIC/vue-frontend-ts' }
+      { text: 'GitHub', link: 'https://github.com/CaribesTIC/laravuel-apispa' }      
     ],
     sidebar: [{
         text: 'Comenzar',   // required
