@@ -57,9 +57,9 @@ Es un componente simple que funciona con el punto final `/logout` de Fortify. Cu
 
 ## Dashboard View (Protected Path)
 
-[Ver archivo en GitHub](https://github.com/garethredfern/laravel-vue/blob/main/src/views/Dashboard.vue)
+[View file on GitHub](https://github.com/garethredfern/laravel-vue/blob/main/src/views/Dashboard.vue)
 
-Este componente requiere autenticación antes de que pueda verse. Un tablero podría mostrar mucho más, pero lo importante aquí es que está protegido. Un usuario debe estar registrado para verlo.
+This component requires authentication before it can be used. A board could show much more, but the important thing here is that it is protected. A user must be registered to view it.
 
 ## Forgot Password View
 
