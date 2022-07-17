@@ -35,7 +35,9 @@ module.exports = {
           { text: 'Autenticación de Vue', link: '/vue/vue-authentication' },          
           { text: 'Usando VueRouter', link: '/vue/using-vuerouter' },
           { text: 'El Middleware', link: '/vue/the-middleware' },
-          { text: 'Vistas y Componentes', link: '/vue/views-and-components' }
+          { text: 'Componentes Genéricos', link: '/vue/generic-components' },
+          { text: 'Auth: Vistas y Componentes', link: '/vue/auth-views-and-components' },
+          { text: 'CRUD de Usuarios', link: '/vue/users-crud' }
         ]
       }
     ]

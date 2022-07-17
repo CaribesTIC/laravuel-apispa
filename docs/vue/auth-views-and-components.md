@@ -1,4 +1,4 @@
-# Vistas y Componentes
+# Auth: Vistas y Componentes
 
 Aquí hay un desglose de cada uno de los componentes y vistas de Vue que se utilizan para gestionar la autenticación de usuarios, el restablecimiento de contraseñas y la verificación de correo electrónico.
 
@@ -22,7 +22,7 @@ Esta vista es muy sencilla, sin embargo, ya tiene sus correspondientes pruebas a
 
 Esta vista importa dos archivos:
 
-1. [`src/modules/Auth/components/FormRegister.vue`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/components/FormRegister.vue): Este componente encapsula el formulario para aser más fácil la prueba de la emisión del evento `submit`.
+1. [`src/modules/Auth/components/FormRegister.vue`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/components/FormRegister.vue): Este componente encapsula el formulario para hacer más fácil la prueba de la emisión del evento `submit`.
   
 2. [`src/modules/Auth/composables/useRegister.ts`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/composables/useRegister.ts): Este composable mantiene la lógica de negocio separada de la interfaz del usuario.
 
@@ -39,7 +39,7 @@ Y por último las respectivas pruebas automatizadas asociadas a la vista de regi
 
 Esta vista importa dos archivos:
 
-1. [`src/modules/Auth/components/FormLogin.vue`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/components/FormLogin.vue): Este componente encapsula el formulario para aser más fácil la prueba de la emisión del evento `submit`.
+1. [`src/modules/Auth/components/FormLogin.vue`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/components/FormLogin.vue): Este componente encapsula el formulario para hacer más fácil la prueba de la emisión del evento `submit`.
 
 1. [`src/modules/Auth/composables/useLogin.ts`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/composables/useLogin.ts): Este composable mantiene la lógica de negocio separada de la interfaz del usuario.
 
@@ -54,6 +54,10 @@ Y por último las respectivas pruebas automatizadas asociadas a la vista de inic
 
 [**`src/modules/Auth/components/Logout.vue`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/components/Logout.vue)
 Es un componente simple que funciona con el punto final `/logout` de Fortify. Cuando se cierra la sesión de un usuario, se envía la acción de `authStore.logout()` que borra al usuario del `Store` y lo redirige a la vista de inicio de sesión.
+
+:::warning
+Lo que sigue a continuación en este apartado no está aún revisado...
+:::
 
 ## Dashboard View (Protected Path)
 
