@@ -36,6 +36,7 @@ module.exports = {
           { text: 'Usando VueRouter', link: '/vue/using-vuerouter' },
           { text: 'El Middleware', link: '/vue/the-middleware' },
           { text: 'Componentes Genéricos', link: '/vue/generic-components' },
+          { text: 'Componibles Genéricos', link: '/vue/generic-composables' },
           { text: 'Auth: Vistas y Componentes', link: '/vue/auth-views-and-components' },
           { text: 'CRUD de Usuarios', link: '/vue/users-crud' }
         ]

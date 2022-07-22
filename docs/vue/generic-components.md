@@ -1,6 +1,6 @@
 # Componentes Genéricos
 
-Los componentes genéricos son aquellos componentes que podrían ser reutilizados en cualquier lugar del proyecto a nivel general. Etán ubicados en la carpeta: `src/components` principal de la SPA.
+Los componentes genéricos son aquellos que podrían ser reutilizados en cualquier lugar del proyecto a nivel general. Etán ubicados en la carpeta: [`src/components`](https://github.com/CaribesTIC/vue-frontend-ts/tree/main/src/components) principal de la SPA.
 
 ## AppBtn.vue
 [`src/components/AppBtn.vue`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/components/AppBtn.vue)
