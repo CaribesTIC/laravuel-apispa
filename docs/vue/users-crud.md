@@ -4,19 +4,19 @@ El CRUD de Usuarios es un módulo con rutas protegidas desde el [**`router`**](.
 
 Está conformado por dos vistas ubicadas dentro de la carpeta [**`src/modules/User/views/`**](https://github.com/CaribesTIC/vue-frontend-ts/tree/main/src/modules/User/views):
 
-- Vista `List.vue`
+- Vista `Index.vue`
 - Vista `CreateOrEdit.vue`
 
-## Vista `List.vue`
+## Vista `Index.vue`
 
-Esta vista [**`src/modules/User/views/List.vue`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/views/List.vue) es la encargada de mostrar la lista de todos los usuarios que han sido registrados en la base de datos de la API de Laravel. Si no hay usuarios registrados entonces mostrará el mensaje `Usuarios no encontrados.`
+Esta vista [**`src/modules/User/views/Index.vue`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/views/Index.vue) es la encargada de mostrar la lista de todos los usuarios que han sido registrados en la base de datos de la API de Laravel. Si no hay usuarios registrados entonces mostrará el mensaje `Usuarios no encontrados.`
 
 Ella importa los siguientes componentes genéricos:
 - [AppBtn.vue](../vue/generic-components.html#appbtn-vue)
 - [AppPageHeader.vue](../vue/generic-components.html#apppageheader-vue)
 - [AppPaginationB.vue](../vue/generic-components.html#apppaginationb-vue)
 
-Además, esta vista importa el componible personalizado [**`src/modules/User/composables/useList.ts`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/composables/useList.ts) -
+Además, esta vista importa el componible personalizado [**`src/modules/User/composables/useIndex.ts`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/composables/useIndex.ts) -
 Dentro de este componible se encuentra la regla de negocio, separándola de su interfaz de usuario.
 
 Este componible importa de Vue la función [reactive](https://vuejs.org/api/reactivity-core.html#reactive) y el gancho [onMounted](https://vuejs.org/api/composition-api-lifecycle.html#onmounted). Mientras que de VueRouter importa el gancho [onBeforeRouteUpdate](https://router.vuejs.org/api/#onbeforerouteupdate). Tambíen importa los siguientes componibles genéricos:

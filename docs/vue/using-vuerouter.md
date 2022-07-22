@@ -44,7 +44,7 @@ export default [{
     path: "/users",
     name: "users",
     meta: { middleware: [auth, admin] },
-    component: () => import("@/modules/User/views/List.vue")      
+    component: () => import("@/modules/User/views/Index.vue")      
       .then(m => m.default)
 }, {
     path: "/users/create",
