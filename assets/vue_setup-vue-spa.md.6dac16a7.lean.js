@@ -1,1 +1,0 @@
-import{_ as e,c as r,o as a,d as n}from"./app.98a90f73.js";const h='{"title":"Configurar Vue SPA","description":"","frontmatter":{},"headers":[],"relativePath":"vue/setup-vue-spa.md"}',t={},o=n("",6),s=[o];function i(p,l,c,u,d,f){return a(),r("div",null,s)}var b=e(t,[["render",i]]);export{h as __pageData,b as default};
