@@ -35,8 +35,8 @@ php artisan migrate
 Sanctum necesita una configuración específica para permitirle trabajar con una SPA separada. Primero agreguemos lo siguiente en su archivo `.env`:
 
 ```php
-SANCTUM_STATEFUL_DOMAINS=localhost:3000
-SPA_URL=http://localhost:3000
+SANCTUM_STATEFUL_DOMAINS=localhost:5173
+SPA_URL=http://localhost:5173
 SESSION_DOMAIN=localhost
 ```
 
@@ -91,4 +91,11 @@ Ejecuta las migraciones:
 
 ```php
 php artisan migrate --seed
+```
+## Almacenamiento de Archivos
+
+En el archivo `.env` se declara lo siguiente para el almacenamiento de archivos :
+
+```php
+DO_SPACES_PUBLIC=http://localhost:8000/storage/
 ```
