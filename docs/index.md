@@ -1,18 +1,27 @@
 ---
-home: true
-heroImage: /logo.png
-heroAlt: Logo image
-heroText: LaraVuel
-tagline: API-SPA
-actionText: Comenzar
-actionLink: /guide/introduction
+layout: home
+
+hero:
+  name: LaraVuel
+  text: API-SPA
+  tagline: Laravel + Vue
+  image:
+    src: /logo.png
+    alt: LaraVuel
+  actions:
+    - theme: brand
+      text: Comenzar
+      link: /guide/introduction
+    - theme: alt
+      text: GitHub
+      link: https://github.com/CaribesTIC/vue-tdd
+      
 features:
-  - title: Pinia
-    details: Minimal setup with markdown-centered project structure helps you focus on writing.
-  - title: Tailwind
-    details: Enjoy the dev experience of Vue + webpack, use Vue components in markdown, and develop custom themes with Vue.
-  - title: Typescript
-    details: VitePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
+  - title: Laravel
+    details: El marco PHP del lado del servidor para artesanos web. Es un marco de aplicación web con una sintaxis expresiva y elegante.
+  - title: Vue
+    details: El marco JavaScript progresivo del lado del cliente. Es un marco accesible, eficaz y versátil para crear interfaces de usuario web.
+
 footer: MIT Licensed | Copyleft © 2022-present Ernesto Canquiz
 ---
 
