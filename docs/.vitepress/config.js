@@ -1,6 +1,6 @@
 export default {
   title: 'LaraVuel-ApiSpa',
-  description: 'Just playing around.',
+  description: 'Backend y Frontend.',
   base: '/laravuel-apispa/', //  The default path during deployment / secondary address / base can be used/
   themeConfig: {
     logo: '/logo.png',

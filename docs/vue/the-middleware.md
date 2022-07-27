@@ -2,7 +2,14 @@
 
 ## Visión General
 
-A medida que nuestra aplicación crezca, necesitará tener una forma de controlar lo que sucede antes de que se cargue una ruta. Un ejemplo de esto se cubre al [agregar autenticación](../vue/vue-authentication.html#proteccion-de-rutas-y-mantenimiento-del-estado). Usando el enganche del enrutador `beforeEach`, verificamos si una ruta requiere `Auth`, si lo hace, entonces se ejecuta la lógica de autenticación. Esto funciona bien si solo está verificando la autenticación, pero ¿qué sucede si necesita agregar verificaciones adicionales para las rutas de administración? Se verifica un usuario para ver si está autenticado, luego, si va a ver la ruta `/users`, también debe ser administrador. Consulte el ejemplo de autorización básica para repasar esta funcionalidad.
+A medida que nuestra aplicación crezca, necesitará tener una forma de controlar lo que sucede antes de que se cargue una ruta. Un ejemplo de esto se cubre al [agregar autenticación](../vue/vue-authentication.html#proteccion-de-rutas-y-mantenimiento-del-estado).
+
+Usando el enganche del enrutador `beforeEach`, verificamos si una ruta requiere `Auth`, si lo hace, entonces se ejecuta la lógica de autenticación. Esto funciona bien si solo está verificando la autenticación, pero ¿qué sucede si necesita agregar verificaciones adicionales para las rutas de administración? Se verifica un usuario para ver si está autenticado, luego, si va a ver la ruta `/users`, también debe ser administrador. 
+
+:::info
+[Consulte el ejemplo de autorización básica para repasar esta funcionalidad.](https://laravelvuespa.com/authorization/laravel-basic-authorization)
+:::
+
 
 ## Protección de Rutas y Mantenimiento del Estado
 

@@ -2,7 +2,7 @@
 
 ## Puntos finales de autenticación y CORS
 
-El archivo [src/modules/Auth/services/index.ts](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/services/index.ts) mantiene todos los puntos finales de autenticación de API en un solo lugar. Los métodos en este archivo interactúan con los puntos finales de Fortify que hemos configurado previamente.
+El archivo [src/modules/Auth/services/index.ts](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/services/index.ts) mantiene todos los puntos finales de autenticación de API en un solo lugar. Los métodos en este archivo interactúan con [los puntos finales de Fortify que hemos configurado previamente](../laravel/laravel-authentication.html#configuracion-de-fortify).
 
 :::info
 Es importante resaltar que esto requiere que el SPA y la API compartan el mismo dominio de nivel superior. Sin embargo, pueden colocarse en diferentes subdominios.

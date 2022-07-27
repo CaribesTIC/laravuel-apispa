@@ -78,7 +78,7 @@ Sin embargo, lo importante para reconocer aquí es que primero estamos importand
 
 Continuamos con [los componentes globales](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/plugins/components.ts) de la aplicación.
 
-```ts{2,18,19,20}
+```ts{2,17,18,19}
 // @/plugins/components.ts
 import app from '@/plugins/app'
 import { defineAsyncComponent } from 'vue'
