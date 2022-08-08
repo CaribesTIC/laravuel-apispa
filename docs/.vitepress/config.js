@@ -7,6 +7,7 @@ export default {
     nav: [
       { text: 'Inicio', link: '/' },
       { text: 'Guía', link: '/guide/introduction' },
+      { text: 'CaribesTIC', link: 'https://caribestic.github.io/' },
       { text: 'GitHub', link: 'https://github.com/CaribesTIC/laravuel-apispa' }      
     ],
     sidebar: [{
