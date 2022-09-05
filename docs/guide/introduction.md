@@ -4,5 +4,5 @@ Si desea seguir la ruta de tener un SPA completamente separado que consume una A
 
 Los archivos de proyecto de andamiaje se pueden encontrar en GitHub:
 
-- [Larvel API](https://github.com/CaribesTIC/laravel-backend)
-- [Vue SPA](https://github.com/CaribesTIC/vue-frontend-ts)
+- [Larvel API](https://github.com/CaribesTIC/laravuel-api)
+- [Vue SPA](https://github.com/CaribesTIC/laravuel-spa)

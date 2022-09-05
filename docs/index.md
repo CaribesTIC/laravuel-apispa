@@ -14,7 +14,7 @@ hero:
       link: /guide/introduction
     - theme: alt
       text: GitHub
-      link: https://github.com/CaribesTIC/vue-tdd
+      link: https://github.com/CaribesTIC/laravuel-apispa
       
 features:
   - title: Laravel

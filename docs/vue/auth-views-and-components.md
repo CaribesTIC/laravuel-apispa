@@ -4,7 +4,7 @@ Aquí hay un desglose de cada uno de los componentes y vistas de Vue que se util
 
 ## Vista `Home.vue`
 
-[**`src/modules/Auth/views/Home.vue`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/views/Home.vue)
+[**`src/modules/Auth/views/Home.vue`**](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/Auth/views/Home.vue)
 forma parte del módulo `Auth`. Básicamente es una pantalla de bienvenida que se le brinda al usuario con la opción de elegir dos botones en el caso de que no haya iniciado sesión:
 
 1. _"Registrarse"_
@@ -12,47 +12,47 @@ forma parte del módulo `Auth`. Básicamente es una pantalla de bienvenida que s
 
 Esta vista es muy sencilla, sin embargo, ya tiene sus correspondientes pruebas automatizadas para garantizar siempre su buen funcionamiento.
 
-- [`tests/modules/auth/views/homeMountedCorrectly.spec.ts`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/tests/modules/auth/views/homeMountedCorrectly.spec.ts)
-- [`tests/modules/auth/views/homeLinksWork.spec.ts`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/tests/modules/auth/views/homeLinksWork.ts)
+- [`tests/modules/auth/views/homeMountedCorrectly.spec.ts`](https://github.com/CaribesTIC/laravuel-spa/blob/main/tests/modules/auth/views/homeMountedCorrectly.spec.ts)
+- [`tests/modules/auth/views/homeLinksWork.spec.ts`](https://github.com/CaribesTIC/laravuel-spa/blob/main/tests/modules/auth/views/homeLinksWork.ts)
 
 
 ## Vista `Register.vue`
 
-[**`src/modules/Auth/views/Register.vue`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/views/Register.vue) permite a los usuarios registrarse para obtener una cuenta si no tienen una. Funciona con el punto final `/register` de Fortify. Solo funciona cuando un usuario no ha iniciado sesión, no puede usarlo para agregar usuarios si ha iniciado sesión. Para agregar usuarios a través de una pantalla de administración, necesitaríamos crear otro punto final de API y modificar este componente para publicarlo también. Por ahora, se mantiene simplemente para registrar nuevos usuarios. Una vez que un usuario se registra correctamente, inicia sesión automáticamente y se le redirige al panel.
+[**`src/modules/Auth/views/Register.vue`**](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/Auth/views/Register.vue) permite a los usuarios registrarse para obtener una cuenta si no tienen una. Funciona con el punto final `/register` de Fortify. Solo funciona cuando un usuario no ha iniciado sesión, no puede usarlo para agregar usuarios si ha iniciado sesión. Para agregar usuarios a través de una pantalla de administración, necesitaríamos crear otro punto final de API y modificar este componente para publicarlo también. Por ahora, se mantiene simplemente para registrar nuevos usuarios. Una vez que un usuario se registra correctamente, inicia sesión automáticamente y se le redirige al panel.
 
 Esta vista importa dos archivos:
 
-1. [`src/modules/Auth/components/FormRegister.vue`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/components/FormRegister.vue): Este componente encapsula el formulario para hacer más fácil la prueba de la emisión del evento `submit`.
+1. [`src/modules/Auth/components/FormRegister.vue`](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/Auth/components/FormRegister.vue): Este componente encapsula el formulario para hacer más fácil la prueba de la emisión del evento `submit`.
   
-2. [`src/modules/Auth/composables/useRegister.ts`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/composables/useRegister.ts): Este composable mantiene la lógica de negocio separada de la interfaz del usuario.
+2. [`src/modules/Auth/composables/useRegister.ts`](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/Auth/composables/useRegister.ts): Este composable mantiene la lógica de negocio separada de la interfaz del usuario.
 
 Y por último las respectivas pruebas automatizadas asociadas a la vista de registro:
 
-- [`tests/modules/auth/views/registerMountedCorrectly.spec.ts `](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/tests/modules/auth/views/registerMountedCorrectly.spec.ts)
-- [`tests/modules/auth/services/registerFetchMock.spec.ts`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/tests/modules/auth/services/registerFetchMock.spec.ts)
-- [`tests/modules/auth/components/formRegisterInteractingWith.spec.ts`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/tests/modules/auth/components/formRegisterInteractingWith.spec.ts)
-- [`tests/modules/auth/components/formRegisterMountedCorrectly.spec.ts`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/tests/modules/auth/components/formRegisterMountedCorrectly.spec.ts)
+- [`tests/modules/auth/views/registerMountedCorrectly.spec.ts `](https://github.com/CaribesTIC/laravuel-spa/blob/main/tests/modules/auth/views/registerMountedCorrectly.spec.ts)
+- [`tests/modules/auth/services/registerFetchMock.spec.ts`](https://github.com/CaribesTIC/laravuel-spa/blob/main/tests/modules/auth/services/registerFetchMock.spec.ts)
+- [`tests/modules/auth/components/formRegisterInteractingWith.spec.ts`](https://github.com/CaribesTIC/laravuel-spa/blob/main/tests/modules/auth/components/formRegisterInteractingWith.spec.ts)
+- [`tests/modules/auth/components/formRegisterMountedCorrectly.spec.ts`](https://github.com/CaribesTIC/laravuel-spa/blob/main/tests/modules/auth/components/formRegisterMountedCorrectly.spec.ts)
 
 ## Vista de `Login.vue`
 
-[**`src/modules/Auth/views/Login.vue`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/views/Login.vue) funciona con el punto final `/login` de Fortify. Tenga en cuenta que todos los puntos finales de autenticación se mantienen en [`src/modules/Auth/services/index.ts`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/services/index.ts). Una vez que un usuario inicia sesión correctamente, se le redirige al panel de control.
+[**`src/modules/Auth/views/Login.vue`**](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/Auth/views/Login.vue) funciona con el punto final `/login` de Fortify. Tenga en cuenta que todos los puntos finales de autenticación se mantienen en [`src/modules/Auth/services/index.ts`](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/Auth/services/index.ts). Una vez que un usuario inicia sesión correctamente, se le redirige al panel de control.
 
 Esta vista importa dos archivos:
 
-1. [`src/modules/Auth/components/FormLogin.vue`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/components/FormLogin.vue): Este componente encapsula el formulario para hacer más fácil la prueba de la emisión del evento `submit`.
+1. [`src/modules/Auth/components/FormLogin.vue`](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/Auth/components/FormLogin.vue): Este componente encapsula el formulario para hacer más fácil la prueba de la emisión del evento `submit`.
 
-1. [`src/modules/Auth/composables/useLogin.ts`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/composables/useLogin.ts): Este composable mantiene la lógica de negocio separada de la interfaz del usuario.
+1. [`src/modules/Auth/composables/useLogin.ts`](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/Auth/composables/useLogin.ts): Este composable mantiene la lógica de negocio separada de la interfaz del usuario.
 
 Y por último las respectivas pruebas automatizadas asociadas a la vista de inicio de sesión:
 
-- [`tests/modules/auth/views/loginMountedCorrectly.spec.ts `](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/tests/modules/auth/views/loginMountedCorrectly.spec.ts)
-- [`tests/modules/auth/services/loginFetchMock.spec.ts`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/tests/modules/auth/services/loginFetchMock.spec.ts)
-- [`tests/modules/auth/components/formLoginInteractingWith.spec.ts`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/tests/modules/auth/components/formLoginInteractingWith.spec.ts)
-- [`tests/modules/auth/components/formLoginMountedCorrectly.spec.ts`](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/tests/modules/auth/components/formLoginMountedCorrectly.spec.ts)
+- [`tests/modules/auth/views/loginMountedCorrectly.spec.ts `](https://github.com/CaribesTIC/laravuel-spa/blob/main/tests/modules/auth/views/loginMountedCorrectly.spec.ts)
+- [`tests/modules/auth/services/loginFetchMock.spec.ts`](https://github.com/CaribesTIC/laravuel-spa/blob/main/tests/modules/auth/services/loginFetchMock.spec.ts)
+- [`tests/modules/auth/components/formLoginInteractingWith.spec.ts`](https://github.com/CaribesTIC/laravuel-spa/blob/main/tests/modules/auth/components/formLoginInteractingWith.spec.ts)
+- [`tests/modules/auth/components/formLoginMountedCorrectly.spec.ts`](https://github.com/CaribesTIC/laravuel-spa/blob/main/tests/modules/auth/components/formLoginMountedCorrectly.spec.ts)
 
 ## Componente `Logout.vue`
 
-[**`src/modules/Auth/components/Logout.vue`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/components/Logout.vue)
+[**`src/modules/Auth/components/Logout.vue`**](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/Auth/components/Logout.vue)
 Es un componente simple que funciona con el punto final `/logout` de Fortify. Cuando se cierra la sesión de un usuario, se envía la acción de `authStore.logout()` que borra al usuario del `Store` y lo redirige a la vista de inicio de sesión.
 
 :::warning

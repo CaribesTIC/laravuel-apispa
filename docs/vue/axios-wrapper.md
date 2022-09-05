@@ -10,7 +10,7 @@ Si desea saber más sobre esto consulte [¿ por qué los desarrolladores de Java
 
 ## El Envoltorio Http
 
-Si bien es cierto que Axios es una buena elección, desacoplarlo de la aplicación es una buena práctica. Para ello contamos con un sencillo envoltorio llamado [Http](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/utils/Http/index.ts).
+Si bien es cierto que Axios es una buena elección, desacoplarlo de la aplicación es una buena práctica. Para ello contamos con un sencillo envoltorio llamado [Http](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/utils/Http/index.ts).
 
 ```ts
 // utils/Http/index.ts
@@ -73,7 +73,7 @@ En la última línea del código, observe que por defecto, es exportada una inst
 
 ## Objeto `init`.
 
-El archivo [src/utils/Http/init.ts](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/utils/Http/init.ts) exporta un objeto de configuración que ilustra lo siguiente.
+El archivo [src/utils/Http/init.ts](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/utils/Http/init.ts) exporta un objeto de configuración que ilustra lo siguiente.
 
 ```ts
 // utils/Http/init.ts
@@ -99,11 +99,11 @@ export default<Init> {
 ```
 Observamos aquí, que básicamente para crear una instancia de Http que haga solicitudes a la correspondiente API de Laravel, necesitamos proporcionarle al objeto `init` las siguientes tres propiedades:
 
-1. `baseURL`: Representa la URL base de nuestra API, la cual está declarada en nuestro [archivo de congiguración de Vite](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/vite.config.ts).
+1. `baseURL`: Representa la URL base de nuestra API, la cual está declarada en nuestro [archivo de congiguración de Vite](https://github.com/CaribesTIC/laravuel-spa/blob/main/vite.config.ts).
 1. `withCredentials`: Esta propiedad establecida en `true` asegura que tendrá el encabezado _Access-Control-Allow-Credentials_. Se puede leer más sobre esto en la [documentación de MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials).
-1. `handleError`: Es un simple método personalizado para el manejo de errores. Note que implementa el método [useAuthStore](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/stores/index.ts).
+1. `handleError`: Es un simple método personalizado para el manejo de errores. Note que implementa el método [useAuthStore](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/Auth/stores/index.ts).
 
-La declaraciones de tipado del objeto `init` está ciendo exportado desde el archivo [src/utils/Http/Http.ts](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/utils/Http/Http.ts). 
+La declaraciones de tipado del objeto `init` está ciendo exportado desde el archivo [src/utils/Http/Http.ts](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/utils/Http/Http.ts). 
 
 Por otro lado, si por alguna razón no desea crear una instancia `Http` con las características contempladas en el objeto `ìnit` observe que también esta clase está exportada de manera nombrada.
 

@@ -101,7 +101,7 @@ Esto ahora se puede intercambiar para pasar una serie de funciones de `middlewar
 }
 ```
 
-Las funciones del `middleware` se mantendrán juntas en una nueva carpeta [src/middleware](https://github.com/CaribesTIC/vue-frontend-ts/tree/main/src/middleware). Echemos un vistazo a la función del archivo [src/middleware/auth.ts](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/middleware/auth.ts). Debería parecer familiar porque la mayor parte del código se corta del método original `beforeEach` anterior. Consulte el apartado de [Middleware Auth](../vue/the-middleware.html#middleware-auth) para obtener una descripción detallada de este método. Por ahora, solo concéntrese en el patrón para una función de middleware:
+Las funciones del `middleware` se mantendrán juntas en una nueva carpeta [src/middleware](https://github.com/CaribesTIC/laravuel-spa/tree/main/src/middleware). Echemos un vistazo a la función del archivo [src/middleware/auth.ts](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/middleware/auth.ts). Debería parecer familiar porque la mayor parte del código se corta del método original `beforeEach` anterior. Consulte el apartado de [Middleware Auth](../vue/the-middleware.html#middleware-auth) para obtener una descripción detallada de este método. Por ahora, solo concéntrese en el patrón para una función de middleware:
 
 ```ts
 export default function auth({ to, next, store }) {}
@@ -110,7 +110,7 @@ export default function auth({ to, next, store }) {}
 La función `auth()` toma un objeto de los parámetros que requerimos. Por lo general, será `to` y siempre será `next` que se pasan desde el VueRouter como contexto. Aquí también requerimos acceso al `store` para que también se transfiera.
 
 :::info
-No olvide importar cualquier middleware necesario en la parte superior dentro del correspondiente [archivo de rutas](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/routes/index.ts).
+No olvide importar cualquier middleware necesario en la parte superior dentro del correspondiente [archivo de rutas](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/Auth/routes/index.ts).
 ```ts
 // @/modules/Auth/routes/index.ts
 import auth from "@/middleware/auth"
@@ -129,7 +129,7 @@ export default [{
 ```
 :::
 
-Ahora veamos lo nuevo del método `beforeEach` dentro del archivo [src/router/index.ts](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/router/index.ts) que representa el `router` y además cómo podemos llamar al método de `middleware[auth]()`.
+Ahora veamos lo nuevo del método `beforeEach` dentro del archivo [src/router/index.ts](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/router/index.ts) que representa el `router` y además cómo podemos llamar al método de `middleware[auth]()`.
 
 ```ts{9,10,11}
 import { computed } from "vue"
@@ -226,7 +226,7 @@ next: middlewarePipeline(context, middleware, 1)
 
 El método `middlewarePipeline` en la propiedad `next` se llama recursivamente, pasando cualquier `context`, el `middleware` y el `index` para llamar a la siguiente función del arreglo `middleware`.
 
-Echemos un vistazo a la función que devuelve el archivo [src/router/middlewarePipeline.ts](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/router/middlewarePipeline.ts) para desglosarlo y así comprender lo siguiente:
+Echemos un vistazo a la función que devuelve el archivo [src/router/middlewarePipeline.ts](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/router/middlewarePipeline.ts) para desglosarlo y así comprender lo siguiente:
 
 1. Se pasan el `context`, el arreglo `middleware` y el `index` del arreglo actual.
 1. Se crea una variable que guarda el siguiente `middleware` para ejecutar. Si hay dos elementos en la matriz de middleware `[auth, admin]` y `auth` acaba de ejecutarse, `nextMiddleware` retendrá a `admin`.
@@ -237,7 +237,7 @@ El método `middlewarePipeline` puede tardar un poco en comprenderse. Tratemos d
 
 ## Middleware Auth
 
-El archivo [src/middleware/auth.ts](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/middleware/auth.ts) es un middleware para verificar si un usuario está autenticado antes de mostrar la ruta protegida. Si la autenticación falla, el usuario es redirigido a la página de inicio de sesión.
+El archivo [src/middleware/auth.ts](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/middleware/auth.ts) es un middleware para verificar si un usuario está autenticado antes de mostrar la ruta protegida. Si la autenticación falla, el usuario es redirigido a la página de inicio de sesión.
 
 Para agregar este middleware a cualquier ruta, simplemente impórtelo en su correspondiente archivo de rutas y finalmente, agregue el método `auth` como un parámetro de enrutador de middleware en la propiedad meta:
 
@@ -261,7 +261,7 @@ export default [{
 
 ## Middleware Guest
 
-El archivo [src/middleware/guest.ts](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/middleware/guest.ts) es un middleware que verifica si el usuario actual ha iniciado sesión y evita que vea páginas de invitados como el inicio de sesión. Si ha iniciado sesión, no tiene sentido poder ver la vista de inicio de sesión; en su lugar, el usuario es redirigido al `dashboard`.
+El archivo [src/middleware/guest.ts](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/middleware/guest.ts) es un middleware que verifica si el usuario actual ha iniciado sesión y evita que vea páginas de invitados como el inicio de sesión. Si ha iniciado sesión, no tiene sentido poder ver la vista de inicio de sesión; en su lugar, el usuario es redirigido al `dashboard`.
 
 Para agregar este middleware a cualquier ruta, simplemente impórtelo en su correspondiente archivo de rutas y finalmente, agregue el método `guest` como un parámetro de enrutador de middleware en la propiedad meta:
 
@@ -284,7 +284,7 @@ export default [{
 
 ## Middleware Admin
 
-El archivo [src/middleware/admin.ts](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/middleware/admin.ts) es un middleware para verificar si el usuario autenticado es un `admin`. Si no lo es, la ruta se redirige a una vista `404`.
+El archivo [src/middleware/admin.ts](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/middleware/admin.ts) es un middleware para verificar si el usuario autenticado es un `admin`. Si no lo es, la ruta se redirige a una vista `404`.
 
 Para agregar este middleware a cualquier ruta, simplemente impórtelo en su correspondiente archivo de rutas y finalmente, agregue el método `admin` como un parámetro de enrutador de middleware en la propiedad meta:
 

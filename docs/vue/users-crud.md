@@ -2,21 +2,21 @@
 
 El CRUD de Usuarios es un módulo con rutas protegidas desde el [**`router`**](../vue/the-middleware.html#proteccion-de-rutas-y-mantenimiento-del-estado) de uso exclusivo del administrador. Su diseño es un excelente andamiaje para desarrollar cualquier CRUD básico.
 
-Está conformado por dos vistas ubicadas dentro de la carpeta [**`src/modules/User/views/`**](https://github.com/CaribesTIC/vue-frontend-ts/tree/main/src/modules/User/views):
+Está conformado por dos vistas ubicadas dentro de la carpeta [**`src/modules/User/views/`**](https://github.com/CaribesTIC/laravuel-spa/tree/main/src/modules/User/views):
 
 - Vista `Index.vue`
 - Vista `CreateOrEdit.vue`
 
 ## Vista `Index.vue`
 
-Esta vista [**`src/modules/User/views/Index.vue`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/views/Index.vue) es la encargada de mostrar la lista de todos los usuarios que han sido registrados en la base de datos de la API de Laravel. Si no hay usuarios registrados entonces mostrará el mensaje `Usuarios no encontrados.`
+Esta vista [**`src/modules/User/views/Index.vue`**](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/User/views/Index.vue) es la encargada de mostrar la lista de todos los usuarios que han sido registrados en la base de datos de la API de Laravel. Si no hay usuarios registrados entonces mostrará el mensaje `Usuarios no encontrados.`
 
 Ella importa los siguientes componentes genéricos:
 - [AppBtn.vue](../vue/generic-components.html#appbtn-vue)
 - [AppPageHeader.vue](../vue/generic-components.html#apppageheader-vue)
 - [AppPaginationB.vue](../vue/generic-components.html#apppaginationb-vue)
 
-Además, esta vista importa el componible personalizado [**`src/modules/User/composables/useIndex.ts`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/composables/useIndex.ts) -
+Además, esta vista importa el componible personalizado [**`src/modules/User/composables/useIndex.ts`**](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/User/composables/useIndex.ts) -
 Dentro de este componible se encuentra la regla de negocio, separándola de su interfaz de usuario.
 
 Este componible importa de Vue la función [reactive](https://vuejs.org/api/reactivity-core.html#reactive) y el gancho [onMounted](https://vuejs.org/api/composition-api-lifecycle.html#onmounted). Mientras que de VueRouter importa el gancho [onBeforeRouteUpdate](https://router.vuejs.org/api/#onbeforerouteupdate). Tambíen importa los siguientes componibles genéricos:
@@ -25,23 +25,23 @@ Este componible importa de Vue la función [reactive](https://vuejs.org/api/reac
 - [useTableGrid](../vue/generic-composables.html#usetablegrid-ts)
 
 A su vez, este componible necesita importar:
-- [**`src/modules/User/services/index.ts`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/services/index.ts), con el alias `UserService`. Aquí es donde están disponibles los puntos hacia la API de Laravel para consumir los correspondientes métodos `getUsers` y `deleteUser`.
+- [**`src/modules/User/services/index.ts`**](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/User/services/index.ts), con el alias `UserService`. Aquí es donde están disponibles los puntos hacia la API de Laravel para consumir los correspondientes métodos `getUsers` y `deleteUser`.
 
 ## Vista `CreateOrEdit.vue`
 
-Esta vista [**`src/modules/User/views/CreateOrEdit.vue`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/views/CreateOrEdit.vue), como su nombre lo indica, cumple dos funciones simultaneamente: 
+Esta vista [**`src/modules/User/views/CreateOrEdit.vue`**](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/User/views/CreateOrEdit.vue), como su nombre lo indica, cumple dos funciones simultaneamente: 
 
 - Crear un registro nuevo.
 - Modificar un registro existente. 
 
 Esta vista además de importar el componente genérico [AppPageHeader.vue](../vue/generic-components.html#apppageheader-vue), tamién importa:
 
-- [**`src/modules/User/components/FormCreateOrEdit.vue`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/components/FormCreateOrEdit.vue). Este componente personalizado encapsula el formulario para hacer más fácil la prueba de la emisión del evento `submit`.
-- [**`src/modules/User/composables/useCreateOrEdit.ts `**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/composables/useCreateOrEdit.ts). Este composable personalizado mantiene la lógica de negocio separada de la interfaz del usuario.
+- [**`src/modules/User/components/FormCreateOrEdit.vue`**](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/User/components/FormCreateOrEdit.vue). Este componente personalizado encapsula el formulario para hacer más fácil la prueba de la emisión del evento `submit`.
+- [**`src/modules/User/composables/useCreateOrEdit.ts `**](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/User/composables/useCreateOrEdit.ts). Este composable personalizado mantiene la lógica de negocio separada de la interfaz del usuario.
 
 **Cuándo Crea o cúando Edita**
 
-En el archivo de rutas del módulo de usuarios [**`src/modules/User/routes/index.ts`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/routes/index.ts) se observa como ambas rutas (`userCreate` y `userEdit`) importan el mismo componente. 
+En el archivo de rutas del módulo de usuarios [**`src/modules/User/routes/index.ts`**](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/User/routes/index.ts) se observa como ambas rutas (`userCreate` y `userEdit`) importan el mismo componente. 
 ```ts{7,16}
 // omitted for brevity ...
 {
@@ -78,7 +78,7 @@ Lo que marca la gran diferencia es que sólamente se le pása el ID del usuario 
 // omitted for brevity ...
 ```
 
-De esta forma, cuando se envía la propiedad ID se le está diciendo al la vista [**`CreateOrEdit.vue`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/views/CreateOrEdit.vue) que se editará un registro existente, de lo contrario se creará nuevo registro.
+De esta forma, cuando se envía la propiedad ID se le está diciendo al la vista [**`CreateOrEdit.vue`**](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/User/views/CreateOrEdit.vue) que se editará un registro existente, de lo contrario se creará nuevo registro.
 
 ```vue{4,8,9,13,14,20}
 <script setup lang="ts">
@@ -112,7 +112,7 @@ const {
 </template>
 ```
 
-Lo mismo sucede en el componente [**`FormCreateOrEdit.vue`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/components/FormCreateOrEdit.vue)
+Lo mismo sucede en el componente [**`FormCreateOrEdit.vue`**](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/User/components/FormCreateOrEdit.vue)
 
 ```vue{5,10,11,19}
 <script setup lang="ts">
@@ -140,7 +140,7 @@ const submit = async () => {
   <!-- omitted for brevity -->  
 </template>
 ```
-Finalmente, la magia sucede en el componible [**`useCreateOrEdit.ts`**](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/composables/useCreateOrEdit.ts).
+Finalmente, la magia sucede en el componible [**`useCreateOrEdit.ts`**](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/User/composables/useCreateOrEdit.ts).
 
 ```ts{3,7,9,24,26,39,41,53,54,55,61}
 // omitted for brevity

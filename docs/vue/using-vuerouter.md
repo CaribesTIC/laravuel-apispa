@@ -4,7 +4,7 @@ Una vez instanciado el `router`, este es pasado como complemento global a la apl
 
 ## `router`
 
-Eche un vistazo al contenido del archivo [src/router/index.ts](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/router/index.ts) y luego veámoslo por parte.
+Eche un vistazo al contenido del archivo [src/router/index.ts](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/router/index.ts) y luego veámoslo por parte.
 
 ## Arquitectura Modular
 
@@ -33,9 +33,9 @@ const routes: Array<RouteRecordRaw> = [
 ]
 // omitted for brevity ...
 ```
-De esta manera, el archivo [src/router/index.ts](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/router/index.ts), mantiene separado por módulos la SPA, con el propósito de que sea lo más ordenada y escalable posible.
+De esta manera, el archivo [src/router/index.ts](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/router/index.ts), mantiene separado por módulos la SPA, con el propósito de que sea lo más ordenada y escalable posible.
 
-Aquí se puede ver un ejemplo de archivo [src/modules/User/routes](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/User/routes/index.ts).
+Aquí se puede ver un ejemplo de archivo [src/modules/User/routes](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/User/routes/index.ts).
 
 ```ts
 // omitted for brevity ...
@@ -65,7 +65,7 @@ export default [{
 
 ## Routes y Layout
 
-En el componente principal [src/App.vue](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/App.vue) se observa cómo funciona el `layout` según el `routes`.
+En el componente principal [src/App.vue](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/App.vue) se observa cómo funciona el `layout` según el `routes`.
 
 ```vue{6,7,8,12,13}
 <script setup lang="ts">
@@ -93,7 +93,7 @@ const layout = computed(
 </style>
 ```
 
-En el archivo [src/modules/Auth/routes](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/modules/Auth/routes/index.ts) hay un buen ejemplo sobre esto. Observemos que en la ruta `profile` se nos olvidó colocar la propiedad `layout`, por lo que en este casos tendrá el valor predeterminado.
+En el archivo [src/modules/Auth/routes](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/modules/Auth/routes/index.ts) hay un buen ejemplo sobre esto. Observemos que en la ruta `profile` se nos olvidó colocar la propiedad `layout`, por lo que en este casos tendrá el valor predeterminado.
 
 ```ts{15,16}
 // omitted for brevity ...
@@ -128,6 +128,6 @@ export default [{
 
 ## RouterLink Extendido
 
-En la mayoría de las aplicaciones de tamaño mediano a grande, vale la pena crear componentes RouterLink personalizados. Por ello, ampliamos RouterLink, para manejar enlaces externos también. Eche un vistazo al componente [src/components/AppLink.vue](https://github.com/CaribesTIC/vue-frontend-ts/blob/main/src/components/AppLink.vue).
+En la mayoría de las aplicaciones de tamaño mediano a grande, vale la pena crear componentes RouterLink personalizados. Por ello, ampliamos RouterLink, para manejar enlaces externos también. Eche un vistazo al componente [src/components/AppLink.vue](https://github.com/CaribesTIC/laravuel-spa/blob/main/src/components/AppLink.vue).
 
 Cabe recordar que este componente forma parte de los [componentes globales](../vue/vue-global-plugins.html#plugins-components). Por lo tanto, está siempre disponible dentro de cualquier otro componente de la SPA.
