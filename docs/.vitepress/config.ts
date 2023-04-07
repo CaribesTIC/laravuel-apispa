@@ -1,14 +1,17 @@
-export default {
+import { defineConfig } from 'vitepress'
+
+// https://vitepress.dev/reference/site-config
+export default defineConfig({
   title: 'LaraVuel-ApiSpa',
   description: 'Backend y Frontend.',
   base: '/laravuel-apispa/', //  The default path during deployment / secondary address / base can be used/
   themeConfig: {
+    // https://vitepress.dev/reference/default-theme-config
     logo: '/logo.png',
     nav: [
       { text: 'Inicio', link: '/' },
-      { text: 'Guía', link: '/guide/introduction' },
-      { text: 'CaribesTIC', link: 'https://caribestic.github.io/' },
-      { text: 'GitHub', link: 'https://github.com/CaribesTIC/laravuel-apispa' }      
+      { text: 'Comenzar', link: '/guide/introduction' },
+      { text: 'CaribesTIC', link: 'https://caribestic.github.io/' },      
     ],
     sidebar: [{
         text: 'Comenzar',   // required
@@ -47,8 +50,9 @@ export default {
           { text: 'CRUD de Usuarios', link: '/vue/users-crud' }
         ]
       }
+    ],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/CaribesTIC/laravuel-apispa' }
     ]
   }
-}
-
-
+})

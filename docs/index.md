@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: LaraVuel
-  text: Scaffolding
-  tagline: Una SPA(Vue) que consume una API(Laravel)
+  name: "LaraVuel"
+  text: "Scaffolding"
+  tagline: "Una SPA(Vue) que consume una API(Laravel)"
   image:
     src: /logo.png
     alt: LaraVuel
@@ -13,8 +13,8 @@ hero:
       text: Comenzar
       link: /guide/introduction
     - theme: alt
-      text: GitHub
-      link: https://github.com/CaribesTIC/laravuel-apispa
+      text: CaribesTIC
+      link: https://caribestic.github.io/
       
 features:
   - title: Laravel
@@ -24,4 +24,6 @@ features:
 
 footer: MIT Licensed | Copyleft © 2022-present Ernesto Canquiz
 ---
+
+
 
