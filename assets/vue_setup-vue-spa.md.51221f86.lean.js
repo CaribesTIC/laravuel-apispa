@@ -1,0 +1,1 @@
+import{_ as e,c as a,o as s,N as r}from"./chunks/framework.d5c3a6a5.js";const d=JSON.parse('{"title":"Configurar Vue SPA","description":"","frontmatter":{},"headers":[],"relativePath":"vue/setup-vue-spa.md"}'),t={name:"vue/setup-vue-spa.md"},n=r("",6),o=[n];function l(i,p,c,u,g,f){return s(),a("div",null,o)}const b=e(t,[["render",l]]);export{d as __pageData,b as default};

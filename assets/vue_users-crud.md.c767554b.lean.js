@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,N as l}from"./chunks/framework.d5c3a6a5.js";const A=JSON.parse('{"title":"CRUD de Usuarios","description":"","frontmatter":{},"headers":[],"relativePath":"vue/users-crud.md"}'),o={name:"vue/users-crud.md"},p=l("",30),e=[p];function t(r,c,F,y,D,i){return n(),a("div",null,e)}const d=s(o,[["render",t]]);export{A as __pageData,d as default};
